@@ -41,7 +41,7 @@
             >
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6 L15 12 L9 18" /></svg>
             </button>
-            <a class="prompt-box__button" :href="active.href">前往 {{ active.title }}</a>
+            <a class="prompt-box__button" :href="withBase(active.href)">前往 {{ active.title }}</a>
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@
       <a
         v-for="(item, idx) in links"
         :key="item.href"
-        :href="item.href"
+        :href="withBase(item.href)"
         class="row"
       >
         <div class="row__index">{{ item.index }}</div>
@@ -183,6 +183,7 @@
 
 <script setup>
 import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { withBase } from 'vitepress'
 import logoRed from '../assets/logo_badge.svg'
 
 const links = [

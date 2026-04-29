@@ -2,20 +2,20 @@
   <main class="landing">
     <section class="hero reveal">
       <div class="hero__content">
-        <p class="hero__eyebrow">OpenSHTU · 生存指南</p>
+        <p class="hero__eyebrow">OpenSHTU · SHTU Manual</p>
 
         <pre class="wordmark" aria-hidden="true">
- ██████╗ ██╗   ██╗██╗██████╗ ███████╗
-██╔════╝ ██║   ██║██║██╔══██╗██╔════╝
-██║  ███╗██║   ██║██║██║  ██║█████╗
-██║   ██║██║   ██║██║██║  ██║██╔══╝
-╚██████╔╝╚██████╔╝██║██████╔╝███████╗
- ╚═════╝  ╚═════╝ ╚═╝╚═════╝ ╚══════╝</pre>
-        <p class="wordmark__caption" aria-hidden="true">生 · 存 · 指 · 南 — Shēng Cún Zhǐ Nán</p>
+███████╗██╗  ██╗████████╗██╗   ██╗
+██╔════╝██║  ██║╚══██╔══╝██║   ██║
+███████╗███████║   ██║   ██║   ██║
+╚════██║██╔══██║   ██║   ██║   ██║
+███████║██║  ██║   ██║   ╚██████╔╝
+╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ </pre>
+        <p class="wordmark__caption" aria-hidden="true">SHTU Manual</p>
 
-        <h1>把科大信息差<br />整理成生存路线图</h1>
+        <h1>SHTU Manual</h1>
         <p class="hero__subtitle">
-          校园基建、学业攻略、衣食住行、个人成长集中在一处，让初来乍到的每一步都有迹可循。
+          面向上海科技大学学生的校园手册：从新生入门、学习规划到日常生活，把分散经验整理成可以直接查阅的路径。
         </p>
 
         <div class="prompt-box" aria-label="站点快速入口">
@@ -24,7 +24,7 @@
             <span>{{ active.copy }}</span>
           </p>
           <div class="prompt-box__footer">
-            <span class="prompt-box__counter">{{ counter }} / 07</span>
+            <span class="prompt-box__counter">{{ counter }} / {{ total }}</span>
             <button
               class="prompt-box__nav"
               type="button"
@@ -61,15 +61,15 @@
             <span></span>
             <span></span>
           </div>
-          <p class="visual-card__label">Campus Guide</p>
-          <strong>校园生存总览</strong>
+          <p class="visual-card__label">SHTU Manual</p>
+          <strong>上科大校园手册</strong>
           <div class="visual-card__progress">
-            <span style="--w: 55%"></span>
+            <span style="--w: 62%"></span>
           </div>
           <ul>
-            <li><span>基础内容</span><b>规划完成</b></li>
-            <li><span>生活指南</span><b>持续补全</b></li>
-            <li><span>进阶技巧</span><b>内容建设中</b></li>
+            <li><span>新生入门</span><b>先看这里</b></li>
+            <li><span>学习规划</span><b>选课科研</b></li>
+            <li><span>校园生活</span><b>衣食住行</b></li>
           </ul>
         </div>
       </div>
@@ -80,8 +80,7 @@
         v-for="(item, idx) in links"
         :key="item.href"
         :href="item.href"
-        class="row reveal"
-        :style="{ '--delay': `${idx * 80}ms` }"
+        class="row"
       >
         <div class="row__index">{{ item.index }}</div>
         <div class="row__body">
@@ -89,123 +88,91 @@
           <small>{{ item.desc }}</small>
         </div>
         <div class="row__visual" aria-hidden="true">
-          <!-- pulse: hub + radiating ripples + outgoing share dots -->
-          <svg v-if="item.anim==='pulse'" viewBox="0 0 320 64" class="anim anim-pulse" preserveAspectRatio="xMidYMid meet">
-            <circle cx="160" cy="32" r="9" class="p-ring" />
-            <circle cx="160" cy="32" r="9" class="p-ring p-ring-2" />
-            <circle cx="160" cy="32" r="8" class="p-core" />
-            <g class="p-spokes">
-              <line x1="160" y1="32" x2="100" y2="18" />
-              <line x1="160" y1="32" x2="90" y2="46" />
-              <line x1="160" y1="32" x2="220" y2="18" />
-              <line x1="160" y1="32" x2="230" y2="46" />
+          <svg v-if="item.anim==='freshman'" viewBox="0 0 320 88" class="anim anim-freshman" preserveAspectRatio="xMidYMid meet">
+            <path class="fm-route" d="M46 58 C92 18 130 72 168 36 S238 28 274 58" />
+            <g class="fm-pin fm-pin-a" transform="translate(46 58)">
+              <path d="M0 -18 C-10 -18 -17 -10 -17 -1 C-17 12 0 25 0 25 C0 25 17 12 17 -1 C17 -10 10 -18 0 -18Z" />
+              <circle r="5" />
             </g>
-            <circle cx="100" cy="18" r="3.5" class="p-sat" />
-            <circle cx="90" cy="46" r="3.5" class="p-sat p-sat-2" />
-            <circle cx="220" cy="18" r="3.5" class="p-sat p-sat-3" />
-            <circle cx="230" cy="46" r="3.5" class="p-sat p-sat-4" />
+            <g class="fm-pin fm-pin-b" transform="translate(274 58)">
+              <path d="M0 -18 C-10 -18 -17 -10 -17 -1 C-17 12 0 25 0 25 C0 25 17 12 17 -1 C17 -10 10 -18 0 -18Z" />
+              <circle r="5" />
+            </g>
+            <circle class="fm-dot fm-d-1" cx="96" cy="35" r="4" />
+            <circle class="fm-dot fm-d-2" cx="148" cy="48" r="4" />
+            <circle class="fm-dot fm-d-3" cx="205" cy="32" r="4" />
           </svg>
 
-          <!-- schools: row of campuses with a scanner ring picking each in turn -->
-          <svg v-else-if="item.anim==='schools'" viewBox="0 0 320 64" class="anim anim-schools" preserveAspectRatio="xMidYMid meet">
-            <g v-for="(t, i) in [80, 140, 200, 260]" :key="i" :transform="`translate(${t}, 50)`" :class="['sc-tower', `sc-t-${i}`]">
-              <polygon class="sc-roof" points="-13,-22 0,-30 13,-22" />
-              <rect class="sc-base" x="-13" y="-22" width="26" height="22" rx="2" />
-              <rect class="sc-window" x="-8" y="-17" width="4" height="4" />
-              <rect class="sc-window" x="4" y="-17" width="4" height="4" />
-              <rect class="sc-door" x="-3" y="-8" width="6" height="8" rx="1" />
+          <svg v-else-if="item.anim==='study'" viewBox="0 0 320 88" class="anim anim-study" preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(76 18)">
+              <rect class="st-book st-book-l" x="0" y="8" width="70" height="52" rx="5" />
+              <rect class="st-book st-book-r" x="70" y="8" width="70" height="52" rx="5" />
+              <path class="st-fold" d="M70 10 V68" />
+              <line class="st-line st-l-1" x1="15" y1="25" x2="55" y2="25" />
+              <line class="st-line st-l-2" x1="15" y1="38" x2="48" y2="38" />
+              <line class="st-line st-l-3" x1="88" y1="25" x2="125" y2="25" />
+              <line class="st-line st-l-4" x1="88" y1="38" x2="118" y2="38" />
             </g>
-            <circle class="sc-pick" r="20" cy="38" cx="80" />
-          </svg>
-
-          <!-- docs: 3 identical checklists, centered, gently pulsing in sync -->
-          <svg v-else-if="item.anim==='docs'" viewBox="0 0 320 80" class="anim anim-docs" preserveAspectRatio="xMidYMid meet">
-            <g v-for="i in 3" :key="i" :transform="`translate(${82 + (i-1)*60},16)`">
-              <g :class="`d-sheet d-sheet-${i}`">
-                <rect width="44" height="48" rx="5" />
-                <line x1="8" y1="14" x2="36" y2="14" class="d-line" />
-                <line x1="8" y1="22" x2="28" y2="22" class="d-line" />
-                <path d="M10 34 L16 40 L28 28" class="d-check" />
-              </g>
+            <g class="st-credit" transform="translate(214 28)">
+              <circle r="22" />
+              <path d="M-8 1 L-1 8 L11 -8" />
             </g>
           </svg>
 
-          <!-- basics: pyramid of knowledge blocks building up + crowning sparkle -->
-          <svg v-else-if="item.anim==='basics'" viewBox="0 0 320 64" class="anim anim-basics" preserveAspectRatio="xMidYMid meet">
-            <g transform="translate(160, 32)">
-              <rect class="ba-block ba-b-0" x="-30" y="14" width="60" height="12" rx="2" />
-              <rect class="ba-block ba-b-1" x="-22" y="0"  width="44" height="12" rx="2" />
-              <rect class="ba-block ba-b-2" x="-14" y="-14" width="28" height="12" rx="2" />
-              <path class="ba-star" d="M0 -26 L2.4 -21 L8 -20 L3.6 -16 L4.8 -10 L0 -13 L-4.8 -10 L-3.6 -16 L-8 -20 L-2.4 -21 Z" />
+          <svg v-else-if="item.anim==='life'" viewBox="0 0 320 88" class="anim anim-life" preserveAspectRatio="xMidYMid meet">
+            <g class="lf-card" transform="translate(74 18)">
+              <rect width="172" height="52" rx="12" />
+              <line x1="20" y1="16" x2="152" y2="16" />
+              <line x1="20" y1="36" x2="152" y2="36" />
+            </g>
+            <g class="lf-icon lf-food" transform="translate(104 44)">
+              <path d="M-10 -14 V14 M-2 -14 V14 M-10 -2 H-2 M10 -14 C18 -4 16 8 8 14" />
+            </g>
+            <g class="lf-icon lf-field" transform="translate(160 44)">
+              <rect x="-16" y="-12" width="32" height="24" rx="12" />
+              <line x1="-16" y1="0" x2="16" y2="0" />
+            </g>
+            <g class="lf-icon lf-bus" transform="translate(216 44)">
+              <rect x="-16" y="-12" width="32" height="21" rx="4" />
+              <circle cx="-8" cy="13" r="3" />
+              <circle cx="8" cy="13" r="3" />
+              <line x1="-10" y1="-2" x2="10" y2="-2" />
             </g>
           </svg>
 
-          <!-- flow: source dispatching packets to 3 targets -->
-          <svg v-else-if="item.anim==='flow'" viewBox="0 0 320 80" class="anim anim-flow" preserveAspectRatio="xMidYMid meet">
-            <path d="M40 40 C 140 40 200 22 280 22" class="f-wire" />
-            <path d="M40 40 C 140 40 200 40 280 40" class="f-wire" />
-            <path d="M40 40 C 140 40 200 58 280 58" class="f-wire" />
-            <circle cx="40" cy="40" r="9" class="f-source" />
-            <circle cx="280" cy="22" r="6" class="f-target" />
-            <circle cx="280" cy="40" r="6" class="f-target" />
-            <circle cx="280" cy="58" r="6" class="f-target" />
-            <g class="f-packet f-p1" transform="translate(40 40)">
-              <circle r="3.5">
-                <animateMotion dur="2.4s" repeatCount="indefinite" path="M0 0 C 100 0 160 -18 240 -18" />
-              </circle>
+          <svg v-else-if="item.anim==='growth'" viewBox="0 0 320 88" class="anim anim-growth" preserveAspectRatio="xMidYMid meet">
+            <path class="gr-link" d="M160 44 L96 24 M160 44 L96 64 M160 44 L224 24 M160 44 L224 64" />
+            <g class="gr-node gr-center" transform="translate(160 44)">
+              <circle r="18" />
+              <path d="M-7 6 C-5 -2 5 -2 7 6 M-5 -6 A5 5 0 1 0 5 -6 A5 5 0 1 0 -5 -6" />
             </g>
-            <g class="f-packet f-p2" transform="translate(40 40)">
-              <circle r="3.5">
-                <animateMotion dur="2.4s" begin="0.6s" repeatCount="indefinite" path="M0 0 C 100 0 160 0 240 0" />
-              </circle>
+            <circle class="gr-node gr-n-1" cx="96" cy="24" r="10" />
+            <circle class="gr-node gr-n-2" cx="96" cy="64" r="10" />
+            <circle class="gr-node gr-n-3" cx="224" cy="24" r="10" />
+            <circle class="gr-node gr-n-4" cx="224" cy="64" r="10" />
+          </svg>
+
+          <svg v-else-if="item.anim==='faq'" viewBox="0 0 320 88" class="anim anim-faq" preserveAspectRatio="xMidYMid meet">
+            <g class="fq-bubble fq-q" transform="translate(84 19)">
+              <rect width="112" height="30" rx="15" />
+              <text x="20" y="20">Q</text>
             </g>
-            <g class="f-packet f-p3" transform="translate(40 40)">
-              <circle r="3.5">
-                <animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M0 0 C 100 0 160 18 240 18" />
-              </circle>
-            </g>
-            <g transform="translate(40 40)">
-              <circle r="3.5" class="f-packet-anchor" />
+            <g class="fq-bubble fq-a" transform="translate(132 43)">
+              <rect width="112" height="30" rx="15" />
+              <circle cx="36" cy="15" r="3" />
+              <circle cx="52" cy="15" r="3" />
+              <circle cx="68" cy="15" r="3" />
             </g>
           </svg>
 
-          <!-- chat: Q/A bubbles with typing dots -->
-          <svg v-else-if="item.anim==='chat'" viewBox="0 0 320 64" class="anim anim-chat" preserveAspectRatio="xMidYMid meet">
-            <g class="c-q">
-              <rect x="40" y="8" width="120" height="20" rx="10" />
-              <text x="52" y="22" class="c-text">Q · 有什么技巧？</text>
-            </g>
-            <g class="c-a">
-              <rect x="160" y="36" width="120" height="20" rx="10" />
-              <circle cx="180" cy="46" r="2.2" class="c-typ" />
-              <circle cx="190" cy="46" r="2.2" class="c-typ c-typ-2" />
-              <circle cx="200" cy="46" r="2.2" class="c-typ c-typ-3" />
-              <text x="214" y="50" class="c-text c-text-light">作答中</text>
-            </g>
-          </svg>
-
-          <!-- resources: book stack with sparkles cycling across spines -->
-          <svg v-else-if="item.anim==='resources'" viewBox="0 0 320 64" class="anim anim-resources" preserveAspectRatio="xMidYMid meet">
-            <g transform="translate(117, 10)">
-              <rect class="rs-book rs-b-0" x="0"  y="6" width="14" height="38" rx="2" />
-              <rect class="rs-book rs-b-1" x="18" y="2" width="14" height="42" rx="2" />
-              <rect class="rs-book rs-b-2" x="36" y="0" width="14" height="44" rx="2" />
-              <rect class="rs-book rs-b-3" x="54" y="3" width="14" height="41" rx="2" />
-              <rect class="rs-book rs-b-4" x="72" y="6" width="14" height="38" rx="2" />
-              <line x1="0"  y1="14" x2="14" y2="14" class="rs-band" />
-              <line x1="18" y1="10" x2="32" y2="10" class="rs-band" />
-              <line x1="36" y1="8"  x2="50" y2="8"  class="rs-band" />
-              <line x1="54" y1="11" x2="68" y2="11" class="rs-band" />
-              <line x1="72" y1="14" x2="86" y2="14" class="rs-band" />
-            </g>
-            <g transform="translate(126, 30)">
-              <path class="rs-sparkle rs-s-0" d="M0 -5 L1.4 -1.4 L5 0 L1.4 1.4 L0 5 L-1.4 1.4 L-5 0 L-1.4 -1.4 Z" />
-            </g>
-            <g transform="translate(160, 22)">
-              <path class="rs-sparkle rs-s-1" d="M0 -5 L1.4 -1.4 L5 0 L1.4 1.4 L0 5 L-1.4 1.4 L-5 0 L-1.4 -1.4 Z" />
-            </g>
-            <g transform="translate(196, 20)">
-              <path class="rs-sparkle rs-s-2" d="M0 -5 L1.4 -1.4 L5 0 L1.4 1.4 L0 5 L-1.4 1.4 L-5 0 L-1.4 -1.4 Z" />
+          <svg v-else-if="item.anim==='contribute'" viewBox="0 0 320 88" class="anim anim-contribute" preserveAspectRatio="xMidYMid meet">
+            <path class="ct-branch" d="M94 22 V66 M94 44 C126 44 126 22 158 22 H224 M94 44 C126 44 126 66 158 66 H224" />
+            <circle class="ct-commit ct-c-1" cx="94" cy="22" r="8" />
+            <circle class="ct-commit ct-c-2" cx="94" cy="66" r="8" />
+            <circle class="ct-commit ct-c-3" cx="224" cy="22" r="8" />
+            <g class="ct-pr" transform="translate(208 50)">
+              <rect width="42" height="28" rx="8" />
+              <path d="M11 15 L18 21 L31 8" />
             </g>
           </svg>
         </div>
@@ -220,39 +187,34 @@ import logoRed from '../assets/logo_badge.svg'
 
 const links = [
   {
-    index: '01', title: '序言与入口', desc: '必读前言与快捷跳转',
-    copy: '从这里开始：了解指南的定位与使用方法，找到你最需要的那一章，开启科大生活。',
-    href: '/intro/', anim: 'pulse'
+    index: '01', title: '新生篇', desc: '入学前后最先要看的入口',
+    copy: '从这里开始：目前先链接 GeekPie 新生手册，后续会补充报到、宿舍、校园基础流程等内容。',
+    href: '/freshman/', anim: 'freshman'
   },
   {
-    index: '02', title: '初来乍到', desc: '校园基建与新生指南',
-    copy: '宿舍、食堂、图书馆、校医院：把校园的基础设施摸清楚，少走弯路，快速上手。',
-    href: '/campus/', anim: 'schools'
+    index: '02', title: '学习篇', desc: '选课、升学、就业与科研',
+    copy: '把选课与学分、出国、保研、考研、实习就业和科研入门拆成独立子篇目，方便按阶段查找。',
+    href: '/study/', anim: 'study'
   },
   {
-    index: '03', title: '学在科大', desc: '选课、成绩与学术生存',
-    copy: '选课攻略、GPA管理、考试节奏：把学业规则研究清楚，让每个学期都走得从容不迫。',
-    href: '/academics/', anim: 'docs'
+    index: '03', title: '生活篇', desc: '餐厅、体育、交通与周边',
+    copy: '科大餐厅、体育场使用、校园交通和附近商场推荐都会放在这里，先把日常生活运转起来。',
+    href: '/life/', anim: 'life'
   },
   {
-    index: '04', title: '科大生活', desc: '衣食住行全指南',
-    copy: '周边美食地图、交通出行攻略、日常采购指南：把生活后勤安排好，才能安心搞学习。',
-    href: '/life/', anim: 'basics'
+    index: '04', title: '成长篇', desc: '组织、群聊、行政窗口与实践',
+    copy: '学生组织、社团、常用行政窗口、勤工助学与实习资源会统一放在成长篇，减少信息散落。',
+    href: '/growth/', anim: 'growth'
   },
   {
-    index: '05', title: '个人成长', desc: '社团、竞赛与资源',
-    copy: '社团加入、竞赛备战、科研机会：用好科大的平台和资源，让大学四年走得更有厚度。',
-    href: '/growth/', anim: 'flow'
+    index: '05', title: '常见问题', desc: '高频疑问集中整理',
+    copy: '把重复出现的问题集中成 FAQ，后续可以按学习、生活、行政流程继续拆分。',
+    href: '/faq/', anim: 'faq'
   },
   {
-    index: '06', title: '旁门左道', desc: '进阶Tips与奇技妙招',
-    copy: '那些手册里没写的：节省时间的工具、不为人知的政策、老生才懂的经验之谈。',
-    href: '/advanced/', anim: 'chat'
-  },
-  {
-    index: '07', title: '附录', desc: '贡献指南与版本更新',
-    copy: '如何参与编辑、提交内容和修订错误：让这份指南持续更新，帮助更多后来者。',
-    href: '/appendix/', anim: 'resources'
+    index: '06', title: '贡献与更新', desc: 'PR、issue 与联系方式',
+    copy: '想补充内容、修订错误或提出建议，可以从贡献与更新页开始，后续会补 GitHub/GitBook 提交教程。',
+    href: '/contribute/', anim: 'contribute'
   }
 ]
 
@@ -260,6 +222,7 @@ const step = ref(0)
 const showBadgeIntro = ref(false)
 const active = computed(() => links[step.value])
 const counter = computed(() => String(step.value + 1).padStart(2, '0'))
+const total = computed(() => String(links.length).padStart(2, '0'))
 const prev = () => { step.value = (step.value - 1 + links.length) % links.length }
 const next = () => { step.value = (step.value + 1) % links.length }
 
@@ -333,11 +296,11 @@ onUnmounted(() => {
   --ink-3: rgba(26, 16, 20, 0.44);
   --glass: rgba(255, 255, 255, 0.62);
   --glass-strong: rgba(255, 255, 255, 0.82);
-  --glass-border: rgba(255, 255, 255, 0.78);
+  --glass-border: rgba(26, 16, 20, 0.1);
   --field-border: rgba(255, 255, 255, 0.9);
   --nav-fill: rgba(255, 255, 255, 0.7);
-  --surface: rgba(255, 255, 255, 0.5);
-  --surface-hover: rgba(255, 255, 255, 0.78);
+  --surface: rgba(255, 255, 255, 0.9);
+  --surface-hover: rgba(255, 255, 255, 0.98);
   --card-surface: rgba(255, 255, 255, 0.88);
   --line-soft: rgba(26, 16, 20, 0.08);
   --line-strong: rgba(26, 16, 20, 0.22);
@@ -355,7 +318,8 @@ onUnmounted(() => {
   --container: min(1180px, calc(100% - 144px));
 
   min-height: calc(100vh - var(--vp-nav-height));
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
   background:
     radial-gradient(circle at 78% 18%, rgba(255, 60, 90, 0.18), transparent 32%),
     radial-gradient(circle at 12% 84%, rgba(255, 200, 210, 0.55), transparent 38%),
@@ -373,11 +337,11 @@ onUnmounted(() => {
   --ink-3: rgba(255, 220, 226, 0.5);
   --glass: rgba(36, 20, 27, 0.6);
   --glass-strong: rgba(42, 24, 32, 0.78);
-  --glass-border: rgba(255, 141, 154, 0.22);
+  --glass-border: rgba(255, 213, 220, 0.16);
   --field-border: rgba(255, 141, 154, 0.24);
   --nav-fill: rgba(255, 255, 255, 0.08);
-  --surface: rgba(36, 20, 27, 0.6);
-  --surface-hover: rgba(49, 27, 36, 0.82);
+  --surface: rgba(31, 31, 35, 0.9);
+  --surface-hover: rgba(39, 39, 43, 0.98);
   --card-surface: rgba(38, 22, 30, 0.86);
   --line-soft: rgba(255, 213, 220, 0.1);
   --line-strong: rgba(255, 213, 220, 0.26);
@@ -407,7 +371,11 @@ onUnmounted(() => {
     transform 700ms cubic-bezier(.2,.7,.2,1) var(--delay, 0ms);
   will-change: transform, opacity;
 }
-.reveal.is-visible { opacity: 1; transform: none; }
+.reveal.is-visible,
+.row.reveal {
+  opacity: 1;
+  transform: none;
+}
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
 }
@@ -768,239 +736,244 @@ onUnmounted(() => {
   height: 88px;
   display: flex;
   align-items: center;
-  justify-content: stretch;
+  justify-content: center;
   overflow: hidden;
+  contain: paint;
 }
 
 .row__visual .anim {
-  width: 100%;
+  width: min(100%, 320px);
   height: 100%;
   overflow: hidden;
+  flex: 0 1 320px;
+  display: block;
 }
 
-/* === pulse: hub + ripples + spokes === */
-.anim-pulse .p-core {
-  fill: var(--red-1);
-  filter: drop-shadow(0 0 10px var(--glow-strong));
-}
-.anim-pulse .p-ring {
-  fill: none; stroke: var(--red-1); stroke-width: 1.6; opacity: 0.6;
-  animation: p-ripple 2.4s ease-out infinite;
-  transform-origin: 160px 32px;
-}
-.anim-pulse .p-ring-2 { animation-delay: 1.2s; }
-.anim-pulse .p-spokes line {
-  stroke: var(--red-1); stroke-width: 1.2; stroke-dasharray: 4 4; opacity: 0.4;
-  animation: p-spoke 1.6s linear infinite;
-}
-.anim-pulse .p-sat {
-  fill: var(--node-fill); stroke: var(--red-1); stroke-width: 1.6;
-  animation: p-sat 2.4s ease-in-out infinite;
-  transform-box: fill-box;
-  transform-origin: center;
-}
-.anim-pulse .p-sat-2 { animation-delay: 0.5s; }
-.anim-pulse .p-sat-3 { animation-delay: 1s; }
-.anim-pulse .p-sat-4 { animation-delay: 1.5s; }
-@keyframes p-ripple {
-  0% { transform: scale(1); opacity: 0.7; }
-  100% { transform: scale(1.7); opacity: 0; }
-}
-@keyframes p-spoke {
-  0% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: -16; }
-}
-@keyframes p-sat {
-  0%, 100% { fill: var(--node-fill); transform: scale(1); }
-  50% { fill: var(--red-1); transform: scale(1.4); }
+.anim-freshman *,
+.anim-study *,
+.anim-life *,
+.anim-growth *,
+.anim-faq *,
+.anim-contribute * {
+  vector-effect: non-scaling-stroke;
 }
 
-/* === schools: row of campuses + scanner ring === */
-.anim-schools .sc-tower polygon,
-.anim-schools .sc-tower rect {
-  fill: var(--node-fill);
-  stroke: color-mix(in srgb, var(--red-1) 32%, transparent);
-  stroke-width: 1.2;
-}
-.anim-schools .sc-roof { fill: color-mix(in srgb, var(--red-1) 18%, var(--node-fill)); }
-.anim-schools .sc-window {
-  fill: color-mix(in srgb, var(--red-1) 22%, transparent);
-  stroke: none;
-}
-.anim-schools .sc-door {
-  fill: var(--red-1);
-  stroke: none;
-  opacity: 0.55;
-  animation: sc-door-blink 4s steps(1, end) infinite;
-}
-.anim-schools .sc-t-0 .sc-door { animation-delay: 0s; }
-.anim-schools .sc-t-1 .sc-door { animation-delay: 1s; }
-.anim-schools .sc-t-2 .sc-door { animation-delay: 2s; }
-.anim-schools .sc-t-3 .sc-door { animation-delay: 3s; }
-.anim-schools .sc-pick {
+/* === freshman: bounded route map === */
+.anim-freshman .fm-route {
   fill: none;
+  stroke: color-mix(in srgb, var(--red-1) 32%, transparent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 8 8;
+  animation: fm-route 2.8s linear infinite;
+}
+.anim-freshman .fm-pin path {
+  fill: var(--node-fill);
   stroke: var(--red-1);
   stroke-width: 1.6;
-  stroke-dasharray: 4 4;
-  filter: drop-shadow(0 0 6px var(--glow-medium));
-  animation: sc-pick-move 4s cubic-bezier(.6,.1,.4,1) infinite, sc-pick-spin 6s linear infinite;
 }
-@keyframes sc-pick-move {
-  0%,   18%  { transform: translateX(0); }
-  25%,  43%  { transform: translateX(60px); }
-  50%,  68%  { transform: translateX(120px); }
-  75%,  93%  { transform: translateX(180px); }
-  100%       { transform: translateX(0); }
+.anim-freshman .fm-pin circle {
+  fill: var(--red-1);
 }
-@keyframes sc-pick-spin {
-  0% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: -32; }
+.anim-freshman .fm-pin-a { animation: fm-pin 2.8s ease-in-out infinite; transform-origin: 46px 58px; }
+.anim-freshman .fm-pin-b { animation: fm-pin 2.8s ease-in-out infinite 0.8s; transform-origin: 274px 58px; }
+.anim-freshman .fm-dot {
+  fill: var(--red-1);
+  opacity: 0.25;
+  animation: fm-dot 2.8s ease-in-out infinite;
 }
-@keyframes sc-door-blink {
-  0%, 22% { opacity: 0.55; }
-  4%, 18% { opacity: 1; }
-  30%, 100% { opacity: 0.55; }
+.anim-freshman .fm-d-2 { animation-delay: 0.35s; }
+.anim-freshman .fm-d-3 { animation-delay: 0.7s; }
+@keyframes fm-route { to { stroke-dashoffset: -32; } }
+@keyframes fm-pin {
+  0%, 100% { translate: 0 0; }
+  45% { translate: 0 -4px; }
 }
-
-/* === docs: 3 checklists, soft pulse === */
-.anim-docs .d-sheet rect {
-  fill: var(--node-fill);
-  stroke: color-mix(in srgb, var(--red-1) 24%, transparent);
-  stroke-width: 1;
-  filter: drop-shadow(0 4px 8px var(--shadow-soft));
-}
-.anim-docs .d-line { stroke: color-mix(in srgb, var(--red-1) 34%, transparent); stroke-width: 2; stroke-linecap: round; }
-.anim-docs .d-check {
-  fill: none; stroke: var(--red-1); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
-  stroke-dasharray: 26; stroke-dashoffset: 26;
-  animation: d-check 2.6s ease-in-out infinite;
-}
-.anim-docs .d-sheet {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: d-bob 2.6s ease-in-out infinite;
-}
-.anim-docs .d-sheet-1, .anim-docs .d-sheet-1 .d-check { animation-delay: 0s; }
-.anim-docs .d-sheet-2, .anim-docs .d-sheet-2 .d-check { animation-delay: 0.2s; }
-.anim-docs .d-sheet-3, .anim-docs .d-sheet-3 .d-check { animation-delay: 0.4s; }
-@keyframes d-bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
-}
-@keyframes d-check {
-  0%, 18% { stroke-dashoffset: 26; }
-  46%, 78% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: 26; }
+@keyframes fm-dot {
+  0%, 25% { opacity: 0.25; transform: scale(0.85); }
+  45%, 70% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 0.25; transform: scale(0.85); }
 }
 
-/* === basics: stacking blocks + crowning sparkle === */
-.anim-basics .ba-block {
+/* === study: book and credit check === */
+.anim-study .st-book {
   fill: var(--node-fill);
-  stroke: color-mix(in srgb, var(--red-1) 32%, transparent);
+  stroke: color-mix(in srgb, var(--red-1) 28%, transparent);
   stroke-width: 1.2;
-  filter: drop-shadow(0 3px 6px var(--shadow-soft));
-  transform-box: fill-box;
-  transform-origin: center bottom;
-  animation: ba-rise 3s ease-in-out infinite;
+  filter: drop-shadow(0 5px 10px var(--shadow-soft));
 }
-.anim-basics .ba-b-0 { animation-delay: 0s; }
-.anim-basics .ba-b-1 { animation-delay: 0.25s; }
-.anim-basics .ba-b-2 { animation-delay: 0.5s; }
-.anim-basics .ba-star {
-  fill: var(--red-1);
-  filter: drop-shadow(0 0 6px var(--glow-medium));
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: ba-twinkle 3s ease-in-out infinite;
-  animation-delay: 0.85s;
+.anim-study .st-book-l { transform-origin: 146px 44px; animation: st-page-l 3.2s ease-in-out infinite; }
+.anim-study .st-book-r { transform-origin: 146px 44px; animation: st-page-r 3.2s ease-in-out infinite; }
+.anim-study .st-fold,
+.anim-study .st-line {
+  fill: none;
+  stroke: color-mix(in srgb, var(--red-1) 38%, transparent);
+  stroke-width: 1.8;
+  stroke-linecap: round;
 }
-@keyframes ba-rise {
-  0%, 6% { transform: translateY(8px) scaleY(0.4); opacity: 0; }
-  18%, 78% { transform: translateY(0) scaleY(1); opacity: 1; }
-  92%, 100% { transform: translateY(0) scaleY(1); opacity: 1; }
+.anim-study .st-line {
+  stroke-dasharray: 42;
+  animation: st-line 3.2s ease-in-out infinite;
 }
-@keyframes ba-twinkle {
-  0%, 32% { opacity: 0; transform: scale(0.6) rotate(-12deg); }
-  48%, 78% { opacity: 1; transform: scale(1) rotate(0deg); }
-  100% { opacity: 0.4; transform: scale(0.9) rotate(6deg); }
+.anim-study .st-l-2,
+.anim-study .st-l-4 { animation-delay: 0.25s; }
+.anim-study .st-credit circle {
+  fill: var(--node-fill);
+  stroke: var(--red-1);
+  stroke-width: 1.8;
+}
+.anim-study .st-credit path {
+  fill: none;
+  stroke: var(--red-1);
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 30;
+  animation: st-check 3.2s ease-in-out infinite;
+}
+@keyframes st-page-l {
+  0%, 100% { transform: skewY(0); }
+  50% { transform: skewY(-2deg); }
+}
+@keyframes st-page-r {
+  0%, 100% { transform: skewY(0); }
+  50% { transform: skewY(2deg); }
+}
+@keyframes st-line {
+  0%, 20% { stroke-dashoffset: 42; opacity: 0.35; }
+  45%, 100% { stroke-dashoffset: 0; opacity: 1; }
+}
+@keyframes st-check {
+  0%, 42% { stroke-dashoffset: 30; }
+  58%, 100% { stroke-dashoffset: 0; }
 }
 
-/* === flow: source → 3 targets, packets travel === */
-.anim-flow .f-wire { fill: none; stroke: color-mix(in srgb, var(--red-1) 24%, transparent); stroke-width: 1.4; }
-.anim-flow .f-source {
-  fill: var(--red-1);
-  filter: drop-shadow(0 0 8px var(--glow-medium));
+/* === life: canteen, field and transport in one bounded card === */
+.anim-life .lf-card rect {
+  fill: var(--node-fill);
+  stroke: color-mix(in srgb, var(--red-1) 25%, transparent);
+  stroke-width: 1.2;
 }
-.anim-flow .f-target {
-  fill: var(--node-fill); stroke: var(--red-1); stroke-width: 2;
-  animation: f-target-pulse 2.4s ease-in-out infinite;
+.anim-life .lf-card line {
+  stroke: color-mix(in srgb, var(--red-1) 18%, transparent);
+  stroke-width: 1.2;
 }
-.anim-flow .f-target:nth-of-type(2) { animation-delay: 0.2s; }
-.anim-flow .f-target:nth-of-type(3) { animation-delay: 0.4s; }
-.anim-flow .f-packet {
-  fill: var(--red-2);
-  filter: drop-shadow(0 0 4px var(--glow-strong));
+.anim-life .lf-icon {
+  fill: none;
+  stroke: var(--red-1);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: lf-bob 3s ease-in-out infinite;
 }
-@keyframes f-target-pulse {
-  0%, 100% { fill: var(--node-fill); }
-  50% { fill: var(--accent-fill); }
+.anim-life .lf-field { animation-delay: 0.22s; }
+.anim-life .lf-bus { animation-delay: 0.44s; }
+@keyframes lf-bob {
+  0%, 100% { translate: 0 0; opacity: 0.72; }
+  45% { translate: 0 -4px; opacity: 1; }
 }
 
-/* === chat: Q/A bubbles + typing === */
-.anim-chat .c-q rect { fill: var(--line-soft); }
-.anim-chat .c-q text { fill: var(--ink); }
-.anim-chat .c-a rect { fill: var(--red-1); }
-.anim-chat .c-a text { fill: var(--button-text); }
-.anim-chat .c-text { font: 700 10px/1 ui-sans-serif, system-ui; }
-.anim-chat .c-text-light { fill: color-mix(in srgb, var(--button-text) 82%, transparent); }
-.anim-chat .c-q { animation: c-in 3.2s ease-in-out infinite; transform-origin: 100px 18px; }
-.anim-chat .c-a { animation: c-in 3.2s ease-in-out infinite; animation-delay: 0.6s; transform-origin: 220px 46px; opacity: 0; }
-.anim-chat .c-typ {
-  fill: color-mix(in srgb, var(--button-text) 82%, transparent);
-  animation: c-typ 1.2s ease-in-out infinite;
+/* === growth: people, organizations and windows === */
+.anim-growth .gr-link {
+  fill: none;
+  stroke: color-mix(in srgb, var(--red-1) 28%, transparent);
+  stroke-width: 1.4;
+  stroke-dasharray: 5 5;
+  animation: gr-flow 2.8s linear infinite;
 }
-.anim-chat .c-typ-2 { animation-delay: 0.2s; }
-.anim-chat .c-typ-3 { animation-delay: 0.4s; }
-@keyframes c-in {
-  0% { opacity: 0; transform: translateY(8px) scale(0.96); }
-  20%, 88% { opacity: 1; transform: translateY(0) scale(1); }
-  100% { opacity: 0; transform: translateY(-4px) scale(0.98); }
+.anim-growth .gr-node {
+  fill: var(--node-fill);
+  stroke: var(--red-1);
+  stroke-width: 1.6;
+  animation: gr-node 3.2s ease-in-out infinite;
 }
-@keyframes c-typ {
-  0%, 100% { opacity: 0.4; transform: translateY(0); }
+.anim-growth .gr-center {
+  fill: none;
+  stroke: var(--red-1);
+}
+.anim-growth .gr-center circle { fill: var(--node-fill); }
+.anim-growth .gr-center path {
+  fill: none;
+  stroke: var(--red-1);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+.anim-growth .gr-n-2 { animation-delay: 0.25s; }
+.anim-growth .gr-n-3 { animation-delay: 0.5s; }
+.anim-growth .gr-n-4 { animation-delay: 0.75s; }
+@keyframes gr-flow { to { stroke-dashoffset: -20; } }
+@keyframes gr-node {
+  0%, 100% { opacity: 0.68; }
+  45% { opacity: 1; fill: var(--accent-fill); }
+}
+
+/* === faq: Q/A bubbles === */
+.anim-faq .fq-bubble rect {
+  stroke: color-mix(in srgb, var(--red-1) 28%, transparent);
+  stroke-width: 1.2;
+}
+.anim-faq .fq-q rect { fill: var(--node-fill); }
+.anim-faq .fq-a rect { fill: var(--red-1); }
+.anim-faq .fq-q text {
+  fill: var(--red-1);
+  font: 800 16px/1 ui-sans-serif, system-ui;
+}
+.anim-faq .fq-a circle {
+  fill: var(--button-text);
+  animation: fq-dot 1.2s ease-in-out infinite;
+}
+.anim-faq .fq-a circle:nth-of-type(2) { animation-delay: 0.18s; }
+.anim-faq .fq-a circle:nth-of-type(3) { animation-delay: 0.36s; }
+.anim-faq .fq-q { animation: fq-in 3s ease-in-out infinite; }
+.anim-faq .fq-a { animation: fq-in 3s ease-in-out infinite 0.35s; opacity: 0; }
+@keyframes fq-in {
+  0% { opacity: 0; translate: 0 7px; }
+  18%, 82% { opacity: 1; translate: 0 0; }
+  100% { opacity: 0; translate: 0 -4px; }
+}
+@keyframes fq-dot {
+  0%, 100% { opacity: 0.35; transform: translateY(0); }
   50% { opacity: 1; transform: translateY(-2px); }
 }
 
-/* === resources: book stack with sparkles === */
-.anim-resources .rs-book {
-  fill: var(--node-fill);
-  stroke: color-mix(in srgb, var(--red-1) 30%, transparent);
-  stroke-width: 1.2;
-  filter: drop-shadow(0 3px 6px var(--shadow-soft));
-}
-.anim-resources .rs-b-0 { fill: color-mix(in srgb, var(--red-1) 12%, var(--node-fill)); }
-.anim-resources .rs-b-2 { fill: color-mix(in srgb, var(--red-1) 18%, var(--node-fill)); }
-.anim-resources .rs-b-4 { fill: color-mix(in srgb, var(--red-1) 10%, var(--node-fill)); }
-.anim-resources .rs-band {
-  stroke: color-mix(in srgb, var(--red-1) 38%, transparent);
-  stroke-width: 1.4;
+/* === contribute: PR branch and merged check === */
+.anim-contribute .ct-branch {
+  fill: none;
+  stroke: color-mix(in srgb, var(--red-1) 35%, transparent);
+  stroke-width: 2;
   stroke-linecap: round;
+  stroke-dasharray: 7 6;
+  animation: ct-branch 2.6s linear infinite;
 }
-.anim-resources .rs-sparkle {
+.anim-contribute .ct-commit {
+  fill: var(--node-fill);
+  stroke: var(--red-1);
+  stroke-width: 1.8;
+  animation: ct-commit 2.8s ease-in-out infinite;
+}
+.anim-contribute .ct-c-2 { animation-delay: 0.25s; }
+.anim-contribute .ct-c-3 { animation-delay: 0.5s; }
+.anim-contribute .ct-pr rect {
   fill: var(--red-1);
-  filter: drop-shadow(0 0 4px var(--glow-strong));
-  transform-box: fill-box;
-  transform-origin: center;
-  opacity: 0;
-  animation: rs-sparkle 2.4s ease-in-out infinite;
+  filter: drop-shadow(0 5px 10px var(--shadow-soft));
 }
-.anim-resources .rs-s-0 { animation-delay: 0s; }
-.anim-resources .rs-s-1 { animation-delay: 0.5s; }
-.anim-resources .rs-s-2 { animation-delay: 1s; }
-@keyframes rs-sparkle {
-  0%, 6% { opacity: 0; transform: scale(0.4) rotate(-20deg); }
-  18%, 38% { opacity: 1; transform: scale(1) rotate(0deg); }
-  56%, 100% { opacity: 0; transform: scale(0.6) rotate(14deg); }
+.anim-contribute .ct-pr path {
+  fill: none;
+  stroke: var(--button-text);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 28;
+  animation: ct-check 2.8s ease-in-out infinite;
+}
+@keyframes ct-branch { to { stroke-dashoffset: -26; } }
+@keyframes ct-commit {
+  0%, 100% { fill: var(--node-fill); }
+  48% { fill: var(--accent-fill); }
+}
+@keyframes ct-check {
+  0%, 38% { stroke-dashoffset: 28; }
+  58%, 100% { stroke-dashoffset: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

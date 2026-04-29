@@ -1,39 +1,66 @@
 import { defineConfig } from 'vitepress'
 
+const sections = [
+  {
+    key: 'freshman',
+    text: '新生篇',
+    items: [{ text: '总览', link: '/freshman/' }]
+  },
+  {
+    key: 'study',
+    text: '学习篇',
+    items: [
+      { text: '总览', link: '/study/' },
+      { text: '选课与学分', link: '/study/course-selection-and-credits' },
+      { text: '出国', link: '/study/overseas' },
+      { text: '保研', link: '/study/postgraduate-recommendation' },
+      { text: '考研', link: '/study/postgraduate-exam' },
+      { text: '实习就业', link: '/study/internship-and-career' },
+      { text: '如何入门科研', link: '/study/research-start' }
+    ]
+  },
+  {
+    key: 'life',
+    text: '生活篇',
+    items: [{ text: '总览', link: '/life/' }]
+  },
+  {
+    key: 'growth',
+    text: '成长篇',
+    items: [{ text: '总览', link: '/growth/' }]
+  },
+  {
+    key: 'faq',
+    text: '常见问题',
+    items: [{ text: '总览', link: '/faq/' }]
+  },
+  {
+    key: 'contribute',
+    text: '贡献与更新',
+    items: [{ text: '总览', link: '/contribute/' }]
+  }
+]
+
 const nav = [
   { text: '首页', link: '/' },
-  { text: '序言', link: '/intro/' },
-  { text: '校园基建', link: '/campus/' },
-  { text: '学在科大', link: '/academics/' },
-  { text: '科大生活', link: '/life/' },
-  { text: '个人成长', link: '/growth/' },
-  { text: '旁门左道', link: '/advanced/' },
-  { text: '附录', link: '/appendix/' }
+  ...sections.map(({ text, key }) => ({ text, link: `/${key}/` }))
 ]
-
-const allSections = [
-  { key: 'intro', text: '序言与快捷入口' },
-  { key: 'campus', text: '初来乍到（校园基建）' },
-  { key: 'academics', text: '学在科大（学术生存）' },
-  { key: 'life', text: '科大生活（衣食住行）' },
-  { key: 'growth', text: '个人成长（组织与资源）' },
-  { key: 'advanced', text: '旁门左道（进阶Tips）' },
-  { key: 'appendix', text: '附录（贡献与更新）' }
-]
-
-const sectionSidebar = allSections.map((s) => ({
-  text: s.text,
-  items: [{ text: '总览', link: `/${s.key}/` }]
-}))
 
 const sidebar = Object.fromEntries(
-  allSections.map((s) => [`/${s.key}/`, sectionSidebar])
+  sections.map(({ key: currentKey }) => [
+    `/${currentKey}/`,
+    sections.map(({ key, text, items }) => ({
+      text,
+      collapsed: key !== currentKey,
+      items
+    }))
+  ])
 )
 
 export default defineConfig({
   base: process.env.VITEPRESS_BASE ?? '/',
-  title: '生存指南',
-  description: '生存指南站点。',
+  title: 'SHTU Manual',
+  description: '上海科技大学校园手册。',
   head: [
     [
       'script',
@@ -90,7 +117,7 @@ export default defineConfig({
       next: '下一篇'
     },
     footer: {
-      message: '生存指南站点。',
+      message: 'SHTU Manual',
       copyright: 'Copyright © 2026'
     }
   }
